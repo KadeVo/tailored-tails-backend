@@ -58,6 +58,7 @@ app.use('/login', login_1.LoginRouter);
 app.use('/stripe', stripe_1.StripeRouter);
 app.get('/items', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const items = yield items_1.default.find();
+    console.log(items);
     res.json(items);
 }));
 app.get('/items/:itemId', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
