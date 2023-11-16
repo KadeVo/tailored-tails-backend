@@ -45,7 +45,7 @@ app.get('/items/:itemId', async (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.sendFile(Path.resolve('./dist/index.html'))
+  res.sendFile(Path.resolve('../../tailored-tails-frontend/dist/index.html'))
 })
 
 mongoose.connect(process.env.MONGO_URL!).then(() => {
