@@ -6,7 +6,7 @@ import itemModel from '../schemas/items'
 import { RegisterRouter } from '../routes/register'
 import { LoginRouter } from '../routes/login'
 import { StripeRouter } from '../routes/stripe'
-
+import Path from 'path'
 dotenv.config()
 
 const PORT = process.env.PORT || 3000
@@ -42,6 +42,10 @@ app.get('/items/:itemId', async (req, res) => {
   } catch (err) {
     res.status(400).json(err)
   }
+})
+
+app.get('*', (req, res) => {
+  res.sendFile(Path.resolve('./dist/index.html'))
 })
 
 mongoose.connect(process.env.MONGO_URL!).then(() => {
