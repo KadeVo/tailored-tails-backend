@@ -44,9 +44,9 @@ app.get('/items/:itemId', async (req, res) => {
   }
 })
 
-app.get('*', (req, res) => {
-  res.sendFile(Path.resolve('../../tailored-tails-frontend/index.html'))
-})
+// app.get('*', (req, res) => {
+//   res.sendFile(Path.resolve('../../tailored-tails-frontend/index.html'))
+// })
 
 mongoose.connect(process.env.MONGO_URL!).then(() => {
   console.log(`listening to port ${PORT}`)
