@@ -47,7 +47,7 @@ if (!stripeKey) {
 const stripe = new stripe_1.default(stripeKey);
 const router = express_1.default.Router();
 exports.StripeRouter = router;
-const YOUR_DOMAIN = 'https://tailored-tails.onrender.com';
+const YOUR_DOMAIN = 'https://tailoredtails.onrender.com';
 router.post('/create-checkout-session', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const line_items = req.body.cartItems.map((item) => {
         return {
@@ -120,8 +120,8 @@ router.post('/create-checkout-session', (req, res) => __awaiter(void 0, void 0, 
         },
         line_items,
         mode: 'payment',
-        success_url: 'https://tailored-tails.onrender.com/success',
-        cancel_url: 'https://tailored-tails.onrender.com/cart',
+        success_url: 'https://tailoredtails.onrender.com/success',
+        cancel_url: 'https://tailoredtails.onrender.com/cart',
     });
     res.send({ url: session.url });
     console.log(session.url);
