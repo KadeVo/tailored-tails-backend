@@ -6,6 +6,7 @@ import itemModel from '../schemas/items'
 import { RegisterRouter } from '../routes/register'
 import { LoginRouter } from '../routes/login'
 import { StripeRouter } from '../routes/stripe'
+import path = require('path')
 
 dotenv.config()
 
@@ -22,9 +23,19 @@ app.use(
   })
 )
 
+app.use(
+  express.static(path.join(__dirname, 'tailored-tails-frontend', 'build'))
+)
+
 app.use('/register', RegisterRouter)
 app.use('/login', LoginRouter)
 app.use('/stripe', StripeRouter)
+
+app.get('*', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, 'tailored-tails-frontend', 'build', 'index.html')
+  )
+})
 
 app.get('/items', async (req, res) => {
   const items = await itemModel.find()
